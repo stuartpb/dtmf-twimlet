@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 tempanswer
+  h2 Usage
+  h3 Step 1
+  p.
+    Go to your Twilio number's configuration, set it for URLs, and configure it
+    to respond to incoming calls with the TwiML response from
+    http://tempanswer.herokuapp.com/incoming (via POST).
+  h3 Step 2
+  form
+    label="Number: "
+      input(type="tel",name='number',placeholder='+18085551234',pattern="\+\d+")
+    label="Sequence: "
+      input(type="text",name='sequence',pattern="\d+")
+    input(type="Submit")

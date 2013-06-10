@@ -1,0 +1,27 @@
+extends layout
+
+if sequence
+  append head
+    script="var seconds = " + seconds
+    script.
+      window.setInterval(function(){
+        seconds--;
+        document.getElementById('timer').textContent =
+          Math.floor(seconds / 60) + ':' + seconds % 60;
+        if (seconds <= 0) {
+          window.location = '/';
+        }
+      },1000);
+    style{
+      #timer {
+        font-size: big;
+      }
+    }
+    
+  block content
+    p When #{number} recieves a call, it will respond by dialing #{sequence}.
+    p#timer= Math.floor(seconds / 60) + ':' + seconds % 60
+else
+  block content
+    p No sequence found for #{number}. Its time may have elapsed.
+    p: a(href='/') Try adding it (again)?
