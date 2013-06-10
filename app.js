@@ -39,8 +39,7 @@ module.exports = function(cfg){
     res.render('index.jade');
   });
   app.post('/',function(req,res,next){
-    res.render('index.jade');
-    db.set(req.body.number,req.body.sequence,'EX 300', function(err,status) {
+    db.setex(req.body.number,req.body.sequence,300, function(err,status) {
       if (err) return next(err);
       if (status != 'OK') console.error('Redis returned status ' + status);
       res.redirect('/monitor?number=' + req.body.number);
