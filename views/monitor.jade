@@ -1,26 +1,26 @@
 extends layout
 
-if sequence
-  append head
+append head
+  if sequence
     script="var seconds = " + seconds
     script.
       window.setInterval(function(){
         seconds--;
         document.getElementById('timer').textContent =
-          Math.floor(seconds / 60) + ':' + seconds % 60;
+          Math.floor(seconds / 60) + (seconds%60<10?':0':':') + seconds % 60;
         if (seconds <= 0) {
           window.location = '/';
         }
       },1000);
     style.
       #timer {
-        font-size: big;
+        font-size: xx-large;
       }
-    
-  block content
+   
+block content
+  if sequence
     p When #{number} recieves a call, it will respond by dialing #{sequence}.
-    p#timer= Math.floor(seconds / 60) + ':' + seconds % 60
-else
-  block content
+    p#timer= Math.floor(seconds / 60) + (seconds%60<10?':0':':') + seconds % 60
+  else
     p No sequence found for #{number}. Its time may have elapsed.
     p: a(href='/') Try adding it (again)?
