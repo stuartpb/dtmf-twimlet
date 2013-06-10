@@ -43,7 +43,10 @@ module.exports = function(cfg){
       req.body.sequence, function(err,status) {
       if (err) return next(err);
       if (status != 'OK') console.error('Redis returned status ' + status);
-      res.redirect('/monitor?number=' + req.body.number);
+      //If set, give Redis a second to read its own write
+      setTimeout(function(){
+        res.redirect('/monitor?number=' + req.body.number);
+      },process.env.REDIS_RYOW_DELAY || 0);
     });
   });
   app.get('/monitor',function(req,res,next){
