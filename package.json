@@ -17,7 +17,7 @@
   "author": "Stuart P. Bentley <stuart@testtrack4.com>",
   "license": "BSD",
   "dependencies": {
-    "envigor": "~0.4.1",
+    "envigor": "~0.4.2",
     "express": "~3.2.6",
     "twilio": "~1.1.2",
     "redis": "~0.8.3",
