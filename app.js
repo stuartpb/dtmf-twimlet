@@ -45,7 +45,7 @@ module.exports = function(cfg){
       if (status != 'OK') console.error('Redis returned status ' + status);
       //If set, give Redis a second to read its own write
       setTimeout(function(){
-        res.redirect('/monitor?number=' + req.body.number);
+        res.redirect('/monitor?number=' + encodeURIComponent(req.body.number));
       },process.env.REDIS_RYOW_DELAY || 0);
     });
   });
