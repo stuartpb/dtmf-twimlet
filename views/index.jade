@@ -5,13 +5,12 @@ block content
   h2 Usage
   h3 Step 1
   p.
-    Go to your Twilio number's configuration, set it for URLs, and configure it
-    to respond to incoming calls with the TwiML response from
-    http://tempanswer.herokuapp.com/incoming (via POST).
+    Go to your Twilio number's configuration, set it for URLs, and set the
+    Voice Request URL to http://tempanswer.herokuapp.com/incoming (POST).
   h3 Step 2
-  form
+  form(method="POST")
     label="Number: "
-      input(type="tel",name='number',placeholder='+18085551234',pattern="\+\d+")
+      input(type="tel",name='number',placeholder='+18085551234',pattern="\\+\\d+")
     label="Sequence: "
-      input(type="text",name='sequence',pattern="\d+")
+      input(type="text",name='sequence',pattern="\\d+")
     input(type="Submit")
