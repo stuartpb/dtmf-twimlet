@@ -4,7 +4,7 @@ var twilio = require('twilio');
 var app = express();
 
 app.use(express.bodyParser());
-app.use('/dtmf',express.static(__dirname+'/dtmf'));
+app.use(express.static(__dirname+'/dtmf'));
 
 function response(req, res, next) {
   var twiml = new twilio.TwimlResponse();
@@ -14,9 +14,8 @@ function response(req, res, next) {
     for (var i = 0; i < tones.length; i++) {
       var tone = tones[i];
       if (tone == 'w') twiml.pause({length: 0.5});
-      else twiml.play('/dtmf/'
-        + (tone == '#' ? 'pound' : tone == '*' ? 'star' : tone)
-        + '.wav');
+      else twiml.play(
+        (tone == '#' ? 'pound' : tone == '*' ? 'star' : tone) + '.wav');
     }
   }
 
