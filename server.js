@@ -15,7 +15,7 @@ function response(req, res, next) {
       var tone = tones[i];
       if (tone == 'w') twiml.pause({length: 0.5});
       else twiml.play(
-        (tone == '#' ? 'pound' : tone == '*' ? 'star' : tone) + '.wav');
+       '/' + (tone == '#' ? 'pound' : tone == '*' ? 'star' : tone) + '.wav');
     }
   }
 
