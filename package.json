@@ -1,26 +1,26 @@
 {
-  "name": "tempanswer",
+  "name": "dtmf-twimlet",
   "version": "0.1.0",
-  "description": "App for temporarily answering Twilio calls",
-  "main": "app.js",
+  "description": "DTMF TwiML generator",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/stuartpb/tempanswer.git"
+    "url": "git://github.com/stuartpb/dtmf-twimlet.git"
   },
   "keywords": [
     "twilio",
-    "telephone"
+    "telephone",
+    "dtmf",
+    "twimlet"
   ],
   "author": "Stuart P. Bentley <stuart@testtrack4.com>",
   "license": "BSD",
   "dependencies": {
-    "envigor": "~0.4.2",
     "express": "~3.2.6",
-    "twilio": "~1.1.2",
-    "redis": "~0.8.3",
-    "jade": "~0.31.2"
+    "twilio": "~1.1.2"
   }
 }
