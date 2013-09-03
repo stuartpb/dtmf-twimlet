@@ -8,17 +8,16 @@ app.use('/dtmf',express.static(__dirname+'/dtmf'));
 
 function response(req, res, next) {
   var twiml = new twilio.TwimlResponse();
-  if (!req.query.Digits)
-    return next(new Error("Must include Digits parameter"));
-    
-  var tones = req.query.Digits.toString().split('');
   
-  for (var i = 0; i < tones.length; i++) {
-    var tone = tones[i];
-    if (tone == 'w') twiml.pause({length: 0.5});
-    else twiml.play('/dtmf/'
-      + (tone == '#' ? 'pound' : tone == '*' ? 'star' : tone)
-      + '.wav');
+  if (req.query.Digits) {
+    var tones = req.query.Digits.toString().split('');
+    for (var i = 0; i < tones.length; i++) {
+      var tone = tones[i];
+      if (tone == 'w') twiml.pause({length: 0.5});
+      else twiml.play('/dtmf/'
+        + (tone == '#' ? 'pound' : tone == '*' ? 'star' : tone)
+        + '.wav');
+    }
   }
 
   return res.type('text/xml').send(twiml.toString());
