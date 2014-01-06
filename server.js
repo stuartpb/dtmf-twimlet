@@ -4,7 +4,6 @@ var twilio = require('twilio');
 var app = express();
 
 app.use(express.bodyParser());
-app.use(express.static(__dirname+'/dtmf'));
 
 function response(req, res, next) {
   var twiml = new twilio.TwimlResponse();
